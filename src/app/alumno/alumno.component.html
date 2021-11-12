@@ -1,0 +1,52 @@
+<form ngForm="formulario">
+  <div class="mt-3">
+    <label for="NombreAlumno" class="form-label">Nombre: </label>
+    <input type="email" class="form-control" id="NombreAlumno" name="nombre"
+    [(ngModel)]="alumno.nombre">
+  </div>
+  <div class="mt-3">
+    <label for="ApellidosAlumno" class="form-label">Apellidos: </label>
+    <input type="email" class="form-control" id="ApellidosAlumno" name="apellidos"
+    [(ngModel)]="alumno.apellidos">
+  </div>
+ <div class="mt-3">
+   <label class="form-label">Genero: </label>
+   <select class="form-select" [(ngModel)]="alumno.genero" name="genero">
+     <option selected value="">---Selecione una opcion---</option>
+     <option *ngFor="let gene of genero" [value]="gene">{{gene}}</option>
+   </select>
+ </div>
+  <div class="mt-3 row">
+    <div class="col-6">
+      <label class="form-label">Telefono: </label>
+      <input id="telefono" class="form-control" type="text" name="telefono"
+      [(ngModel)]="alumno.telefono">
+    </div>
+    <div class="col">
+      <label class="form-label">Ciudad: </label>
+      <input id="direccion" class="form-control" type="text" name="direccion"
+      [(ngModel)]="alumno.direccion">
+    </div>
+  </div>
+
+  <!--Selecionar grupo--->
+  <div class="mt-3">
+    <label class="form-label">Grupo: </label>
+    <select name="grupo" class="form-select" [(ngModel)]="alumno.idGrupo">
+      <option value="" selected>
+        ---Elija una opcion---
+      </option>
+      <option *ngFor="let grupo of grupos" [value]="grupo.idGrupo">{{grupo.Grado+" "+grupo.Grupo}}</option>
+    </select>
+  </div>
+  <br/>
+  <button class="btn btn-primary"
+  [disabled]="alumno.nombre=='' || alumno.apellidos=='' || alumno.genero=='' || alumno.direccion==''
+    || alumno.telefono=='' || alumno.idGrupo==0"
+  (click)="agregaAlumno()" *ngIf="!mostrar">Agregar</button>
+  <button class="btn btn-primary"
+          [disabled]="alumno.nombre=='' || alumno.apellidos=='' || alumno.genero=='' || alumno.direccion==''
+    || alumno.telefono=='' || alumno.idGrupo==0"
+          (click)="modificar()" *ngIf="mostrar">Modificar</button>
+</form>
+

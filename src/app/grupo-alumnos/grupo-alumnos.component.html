@@ -1,0 +1,50 @@
+ <div class="btn-group mt-5" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary" *ngFor="let grupo of grupos" (click)="cargarAlumnosMaterias(grupo.idGrupo)">{{grupo.Grado+" "+grupo.Grupo}}</button>
+  </div>
+
+ <div class="row" *ngIf="grupoSeleccionado">
+   <div class="col-8">
+     <h1 class="mt-3">Alumnos</h1>
+     <table class="table mt-4">
+       <thead>
+       <tr>
+         <th scope="col">ID</th>
+         <th scope="col">Nombre </th>
+         <th scope="col">Apellido </th>
+         <th scope="col">Telefono </th>
+         <th scope="col">Direccion </th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr *ngFor="let alumno of alumnos">
+         <th scope="row">{{alumno.id}}</th>
+         <td scope="row">{{alumno.Nombre}}</td>
+         <td scope="row">{{alumno.Apellidos}}</td>
+         <td scope="row">{{alumno.Telefono}}</td>
+         <td scope="row">{{alumno.Direccion}}</td>
+         <td>
+           <button class="btn btn-warning m-1" (click)="modificar(alumno.id)">Modificar</button>
+           <button class="btn btn-danger m-1" (click)="eliminar(alumno.id)">Eliminar</button>
+         </td>
+       </tr>
+       </tbody>
+     </table>
+   </div>
+   <div class="col">
+     <h1 class="mt-3">Materias</h1>
+     <table class="table mt-4">
+       <thead>
+       <tr>
+         <th scope="col">ID Materia </th>
+         <th scope="col">Nombre </th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr *ngFor="let materia of materias">
+         <th scope="row">{{materia.id}}</th>
+         <td scope="row">{{materia.Nombre}}</td>
+       </tr>
+       </tbody>
+     </table>
+   </div>
+ </div>
